@@ -1,0 +1,27 @@
+/*
+  Variables
+*/
+//Colors
+$colorBlue: #02A8F4;
+$colorGreen: #4CAF50;
+$colorBlack: #000;
+
+//Media Queries Breakpoints
+$tablet: "(min-width: 768px)";
+$desktop: "(min-width: 1024px)";
+
+//Stuff
+ul {
+  padding: 0;
+}
+h2 {
+  margin: 0;
+}
+
+//Import files
+@import 'normalize';
+@import 'mixins';
+@import 'styles';
+@import 'workout';
+
+//

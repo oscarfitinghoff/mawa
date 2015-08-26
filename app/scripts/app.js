@@ -1,0 +1,1 @@
+var app = angular.module('woApp', ['firebase', 'ui.router'])

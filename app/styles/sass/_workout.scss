@@ -1,0 +1,42 @@
+.workoutPage {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @media #{$tablet} {
+    flex-direction: row;
+  }
+}
+
+.woListings {
+  width: 100%;
+  @media #{$tablet} {
+    width: calc(100% - 200px - 20px - 10px);
+    margin-left: 10px;
+  }
+}
+.woDashboard {
+
+}
+
+.woCards {
+  li {
+    list-style: none;
+  }
+
+  .aCard {
+    @include borderRadius(3px);
+    @include boxShadow(1);
+    margin: 10px;
+    padding: 10px;
+    background: #227586;
+    div {
+      display: flex;
+      align-items: center;
+    }
+    .woActivity, 
+    .woLocation {
+      flex: 1;
+    }
+  }
+}

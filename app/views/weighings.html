@@ -1,0 +1,38 @@
+<form class="weightForm">
+  <div class="inputGroup">
+    <input type="text" required>
+    <div class="bottomBar"></div>
+    <label>Date</label>
+  </div>
+  <div class="inputGroup">
+    <input type="text" required>
+    <div class="bottomBar"></div>
+    <label>Weight</label>
+  </div>
+  <div class="inputGroup">
+    <input type="text" required>
+    <div class="bottomBar"></div>
+    <label>BF</label>
+  </div>
+  <div class="inputGroup">
+    <input type="text" required>
+    <div class="bottomBar"></div>
+    <label>Muscle</label>
+  </div>
+  <div class="inputGroup">
+    <input type="text" required>
+    <div class="bottomBar"></div>
+    <label>Water</label>
+  </div>
+  <div class="inputGroup">
+    <input type="text" required>
+    <div class="bottomBar"></div>
+    <label>Bones</label>
+  </div>
+  <button class="workoutBtn">Save</button>
+</form>
+<ul>
+  <li ng-repeat="weigh in userData.weighs">
+    {{weigh.theWeighDate}} - {{weigh.theWeigh}}
+  </li>
+</ul>
