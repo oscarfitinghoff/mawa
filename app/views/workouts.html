@@ -2,26 +2,31 @@
   <div>
     <form class="workoutForm">
       <div class="inputGroup">
-        <input type="text" required>
+        <input type="text" ng-model="theDate" required>
         <div class="bottomBar"></div>
         <label>Date</label>
       </div>
       <div class="inputGroup">
-        <input type="text" required>
+        <input type="text" ng-model="theActivity" required>
         <div class="bottomBar"></div>
         <label>Activity</label>
       </div>
       <div class="inputGroup">
-        <input type="text" required>
+        <input type="text" ng-model="theLocation" required>
+        <div class="bottomBar"></div>
+        <label>Location</label>
+      </div>
+      <div class="inputGroup">
+        <input type="text" ng-model="theDuration" required>
         <div class="bottomBar"></div>
         <label>Duration</label>
       </div>
       <div class="inputGroup">
-        <textarea required></textarea>
+        <textarea ng-model="theComment" required></textarea>
         <div class="bottomBar"></div>
         <label>Comment</label>
       </div>
-      <button class="workoutBtn">Save</button>
+      <button class="workoutBtn" ng-click="addWorkout()">Save</button>
     </form>
   </div>
   <div class="woListings">
@@ -49,7 +54,7 @@
     </div>
     <div class="woCards">
       <ul>
-        <li ng-repeat="workout in userData.workouts | filter: {theActivity: filterActivity, theLocation: filterLocation}">
+        <li ng-repeat="workout in userData.workouts | filter: {theActivity: filterActivity, theLocation: filterLocation} | orderBy:'-theDate'">
           <div class="aCard">
             <div>
               <span class="woActivity"><h2>{{workout.theActivity}}</h2></span>
@@ -66,5 +71,5 @@
   </div>
 </div>
 <section>
-  <pre>{{data | json}}</pre>
+  <pre>{{userData.workouts | json}}</pre>
 </section>
