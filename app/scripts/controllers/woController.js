@@ -1,58 +1,53 @@
 angular.module('woApp')
 
-.controller('woCtrl', function(currentAuth, $scope, $firebaseObject, $firebaseArray, dataFactory) {
+.controller('woCtrl', function(currentAuth, $scope, dataFactory) {
 
-  $scope.common = {
+  $scope.userData = {
+    account: dataFactory.getAccountData(currentAuth.uid),
+    workouts: dataFactory.getWorkoutData(currentAuth.uid),
     theActivities: [],
     theLocations: []
   };
+
   $scope.queryText = '';
-  $scope.theDate = "2020-10-10";
+  $scope.theDate = "2015-08-26";
   $scope.theLocation = undefined;
   $scope.theActivity = undefined;
   $scope.theDuration = "60min";
   $scope.theComment = "testing";
 
-  $scope.userData = {
-    workouts: dataFactory.getWorkoutData(currentAuth.uid)
-  };
 
-  var someData = dataFactory.getWorkoutData(currentAuth.uid);
   $scope.userData.workouts.$loaded().then(function() {
     angular.forEach($scope.userData.workouts, function(value, key) {
-      if($scope.common.theActivities.indexOf(value.theActivity) == -1) {
-        $scope.common.theActivities.push(value.theActivity);
+      if($scope.userData.theActivities.indexOf(value.theActivity) == -1) {
+        $scope.userData.theActivities.push(value.theActivity);
       }
-      var temp = value;
-
-      if(temp.theWeek === undefined) {
-        console.log("No week: " + key);
-      } 
-      someData.$save(temp);
-        
-      //Same for location when that is implementet all over
+      if($scope.userData.theLocations.indexOf(value.theLocation) == -1) {
+        $scope.userData.theLocations.push(value.theLocation);
+      }
     });
   });
-  //ADD!!!
-  // var obj = $firebaseArray(ref);
-  // $scope.obj = obj;
-  // $scope.addWorkout = function() {
-  //   obj.$add({
-  //     theDate: $scope.theDate,
-  //     theLocation: $scope.theLocation,
-  //     theActivity: $scope.theActivity,
-  //     theDuration: $scope.theDuration,
-  //     theComment: $scope.theComment
-  //   }).then(function(ref) {
-  //     ref.key() === obj.$id;
-  //     console.log(ref.key(), obj.$id);
-  //   }, function(error) {
-  //     console.log("Error:", error);
-  //   });
-  // };
 
+  $scope.addWorkout = function() {
+    //function getTheWeek
+    var theWorkout = {
+      theDate: $scope.theDate,
+      theLocation: $scope.theLocation,
+      theActivity: $scope.theActivity,
+      theDuration: $scope.theDuration,
+      theComment: $scope.theComment,
+      theWeek: getTheWeek($scope.theDate)
+    };
+    dataFactory.addWorkoutData(currentAuth.uid, theWorkout);
+  };
 
-  $scope.reStructure = function() {
-     
+  var getTheWeek = function(theDate) {
+
+    var oneDay = 1000*60*60*24;
+    var workoutDate = new Date(theDate);
+    var startDate = new Date($scope.userData.account.startWorkout);
+    var diff = workoutDate.getTime() - startDate; //startDate GLOBAL VAR atm (in app.js)
+    var theWeek = Math.ceil((diff/oneDay)/7);
+    return theWeek;
   }
 });
