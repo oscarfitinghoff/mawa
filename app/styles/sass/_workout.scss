@@ -1,42 +1,57 @@
 .workoutPage {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  align-items: center;
+  @media #{$tablet} {
+    align-items: flex-start;
+  }
+}
 
+.woTopRow {
+  display: flex;
+  flex-direction: column;
   @media #{$tablet} {
     flex-direction: row;
   }
-}
-
-.woListings {
-  width: 100%;
-  @media #{$tablet} {
-    width: calc(100% - 200px - 20px - 10px);
-    margin-left: 10px;
+  .woDashboard {
+    display: flex;
+    flex-direction: column;
+    @media #{$tablet} {
+      flex-direction: row;
+    }
+    .woStats {
+      display: none;
+      @media #{$tablet} {
+        display: initial;
+      }
+    }
   }
-}
-.woDashboard {
-
 }
 
 .woCards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
   li {
     list-style: none;
-  }
 
-  .aCard {
-    @include borderRadius(3px);
-    @include boxShadow(1);
-    margin: 10px;
-    padding: 10px;
-    background: #227586;
-    div {
-      display: flex;
-      align-items: center;
-    }
-    .woActivity, 
-    .woLocation {
-      flex: 1;
+    .aCard {
+      @include borderRadius(3px);
+      @include boxShadow(1);
+      margin: 10px;
+      padding: 10px;
+      background: #607D8B;
+      width: 270px;
+      height: 80px;
+      div {
+        display: flex;
+        align-items: center;
+      }
+      .woActivity, 
+      .woLocation {
+        flex: 1;
+      }
     }
   }
 }

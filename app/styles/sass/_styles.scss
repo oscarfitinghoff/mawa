@@ -19,6 +19,7 @@ body {
 }
 
 .mainHeader {
+  @include boxShadow(1);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -27,7 +28,6 @@ body {
   width: 100%;
   min-width: 200px;
   background: $colorBlue;
-  @include boxShadow(1);
 
   .logo {}
 
@@ -64,7 +64,6 @@ input:focus {
 
 form {
   width: 200px;
-  margin: 0 auto;
   @media #{$tablet} {
     margin-right: 5px;
   }
@@ -89,12 +88,12 @@ textarea {
   margin-top: 15px;
 }
 button {
+  @include borderRadius(3px);
+  @include boxShadow(1);
   background: $colorGreen;
   border: none;
   color: #fff;
   font-size: 1.3em;
-  @include borderRadius(3px);
-  @include boxShadow(1);
 }
 
 .inputGroup {

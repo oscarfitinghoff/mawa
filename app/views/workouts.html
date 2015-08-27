@@ -1,5 +1,5 @@
 <div class="workoutPage">
-  <div>
+  <div class="woTopRow">
     <form class="workoutForm">
       <div class="inputGroup">
         <input type="text" ng-model="theDate" required>
@@ -28,46 +28,50 @@
       </div>
       <button class="workoutBtn" ng-click="addWorkout()">Save</button>
     </form>
-  </div>
-  <div class="woListings">
     <div class="woDashboard">
-      <div class="inputGroup">
-        <input type="text" required>
-        <div class="bottomBar"></div>
-        <label>From</label>
-      </div>
-      <div class="inputGroup">
-        <input type="text" required>
-        <div class="bottomBar"></div>
-        <label>To</label>
-      </div>
-      <div class="inputGroup">
-        <input type="text" ng-model="filterActivity" required>
-        <div class="bottomBar"></div>
-        <label>Activity</label>
-      </div>
-      <div class="inputGroup">
-        <input type="text" ng-model="filterLocation" required>
-        <div class="bottomBar"></div>
-        <label>Location</label>
+      <form>
+        <div class="inputGroup">
+          <input type="text" ng-model="filterFromDate" required>
+          <div class="bottomBar"></div>
+          <label>From</label>
+        </div>
+        <div class="inputGroup">
+          <input type="text" ng-model="filterToDate" required>
+          <div class="bottomBar"></div>
+          <label>To</label>
+        </div>
+        <div class="inputGroup">
+          <input type="text" ng-model="filterActivity" required>
+          <div class="bottomBar"></div>
+          <label>Activity</label>
+        </div>
+        <div class="inputGroup">
+          <input type="text" ng-model="filterLocation" required>
+          <div class="bottomBar"></div>
+          <label>Location</label>
+        </div>
+      </form>
+      <div class="woStats">
+        asdas
       </div>
     </div>
-    <div class="woCards">
-      <ul>
-        <li ng-repeat="workout in userData.workouts | filter: {theActivity: filterActivity, theLocation: filterLocation} | orderBy:'-theDate'">
-          <div class="aCard">
-            <div>
-              <span class="woActivity"><h2>{{workout.theActivity}}</h2></span>
-              <span class="woDuration">{{workout.theDuration}}</span>
-            </div>
-            <div>
-              <span class="woLocation">{{workout.theLocation}}</span>
-              <span>{{workout.theDate}}</span>
-            </div>
+  </div>
+  
+  <div class="woListings">
+    <ul class="woCards">
+      <li ng-repeat="workout in userData.workouts | filter: {theActivity: filterActivity, theLocation: filterLocation} | orderBy:'-theDate'">
+        <div class="aCard">
+          <div>
+            <span class="woActivity"><h2>{{workout.theActivity}}</h2></span>
+            <span class="woDuration">{{workout.theDuration}}</span>
           </div>
-        </li>
-      </ul>
-    </div>
+          <div>
+            <span class="woLocation">{{workout.theLocation}}</span>
+            <span>{{workout.theDate}}</span>
+          </div>
+        </div>
+      </li>
+    </ul>
   </div>
 </div>
 <section>
