@@ -23,6 +23,9 @@ app.controller('woCtrl', function(currentAuth, $scope, dataFactory) {
       addWorkoutDate: false,
       filterFromDate: false,
       filterToDate: false
+    },
+    workoutStats: {
+      workoutsPerWeek: ""
     }
   }
 
@@ -59,10 +62,6 @@ app.controller('woCtrl', function(currentAuth, $scope, dataFactory) {
   }
 
   getUserData();
-
-  $scope.addWorkoutData = {
-    
-  }
 
   $scope.addWorkout = function() {
     //function getTheWeek
