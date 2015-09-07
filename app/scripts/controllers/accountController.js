@@ -1,11 +1,8 @@
-angular.module('woApp')
-
-.controller('accCtrl', function(currentAuth, dataFactory, $scope) {
+app.controller('accCtrl', function(currentAuth, dataFactory, $scope) {
   //console.log(currentAuth.uid)
   $scope.userData = {
     account: dataFactory.getAccountData(currentAuth.uid)
   }
-  
   
   // return $scope.userData = {
   //   user: {

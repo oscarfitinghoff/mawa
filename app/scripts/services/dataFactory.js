@@ -1,18 +1,9 @@
-angular.module('woApp')
-
-.factory('dataFactory', ['$firebaseArray', function($firebaseArray) {
+app.factory('dataFactory', ['$firebaseArray', '$firebaseObject', function($firebaseArray, $firebaseObject) {
 
   return {
     getAccountData: function(user) {
       var ref = new Firebase('https://raxworkout.firebaseio.com/users/' + user + '/account');
-      var temp = $firebaseArray(ref);
-      var obj = {};
-      temp.$loaded().then(function() {
-        obj.email = temp[0].$value;
-        obj.startWorkout = temp[1].$value;
-        temp = [];
-      });
-      return obj;
+      return $firebaseObject(ref);
     },
     getWorkoutData: function(user) {
       var ref = new Firebase('https://raxworkout.firebaseio.com/users/' + user + '/workouts');

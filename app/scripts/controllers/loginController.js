@@ -1,6 +1,4 @@
-angular.module('woApp')
-
-.controller("loginCtrl", ["$scope", "Auth", '$state', function($scope, Auth, $state) {
+app.controller("loginCtrl", ["$scope", "Auth", '$state', function($scope, Auth, $state) {
   
   var authData = Auth.$getAuth();
   if (authData) {
