@@ -1,65 +1,68 @@
 <div class="workoutPage">
   <div class="woTopRow">
     <form class="workoutForm">
-      <div class="inputGroup">
-        <input type="text" ng-model="theDate" required>
+      <div class="inputGroup inputWDate">
+        <input type="text" datepicker-localdate ng-model="userData.newWorkout.theDate" datepicker-popup="yyyy-MM-dd" is-open="userData.dateSelectors.addWorkoutDate" required>
+        <button class="mawaBtn" type="button" ng-click="open($event, 'addWorkoutDate')"><i class="material-icons">today</i></button>
         <div class="bottomBar"></div>
         <label>Date</label>
       </div>
       <div class="inputGroup">
-        <input type="text" ng-model="theActivity" required>
+        <input type="text" ng-model="userData.newWorkout.theActivity" typeahead="activity for activity in userData.theActivities | filter:$viewValue | limitTo:4" required>
         <div class="bottomBar"></div>
         <label>Activity</label>
       </div>
       <div class="inputGroup">
-        <input type="text" ng-model="theLocation" required>
+        <input type="text" ng-model="userData.newWorkout.theLocation" typeahead="location for location in userData.theLocations | filter:$viewValue | limitTo:4" required>
         <div class="bottomBar"></div>
         <label>Location</label>
       </div>
       <div class="inputGroup">
-        <input type="text" ng-model="theDuration" required>
+        <input type="text" ng-model="userData.newWorkout.theDuration" required>
         <div class="bottomBar"></div>
         <label>Duration</label>
       </div>
       <div class="inputGroup">
-        <textarea ng-model="theComment" required></textarea>
+        <textarea ng-model="userData.newWorkout.theComment" required></textarea>
         <div class="bottomBar"></div>
         <label>Comment</label>
       </div>
-      <button class="workoutBtn" ng-click="addWorkout()">Save</button>
+      <button class="mawaBtn workoutBtn" ng-click="open($event)">Save</button>
     </form>
     <div class="woDashboard">
       <form>
-        <div class="inputGroup">
-          <input type="text" ng-model="filterFromDate" required>
+        <div class="inputGroup inputWDate">
+          <input type="text" datepicker-localdate ng-model="userData.filterWO.fromDate" datepicker-popup="yyyy-MM-dd" is-open="userData.dateSelectors.filterFromDate" required>
+          <button class="mawaBtn" type="button" ng-click="open($event, 'filterFromDate')"><i class="material-icons">today</i></button>
           <div class="bottomBar"></div>
           <label>From</label>
         </div>
-        <div class="inputGroup">
-          <input type="text" ng-model="filterToDate" required>
+        <div class="inputGroup inputWDate">
+          <input type="text" datepicker-localdate ng-model="userData.filterWO.toDate" datepicker-popup is-open="userData.dateSelectors.filterToDate" required>
+          <button class="mawaBtn" type="button" ng-click="open($event, 'filterToDate')"><i class="material-icons">today</i></button>
           <div class="bottomBar"></div>
           <label>To</label>
         </div>
         <div class="inputGroup">
-          <input type="text" ng-model="filterActivity" required>
+          <input type="text" ng-model="userData.filterWO.activity" required>
           <div class="bottomBar"></div>
           <label>Activity</label>
         </div>
         <div class="inputGroup">
-          <input type="text" ng-model="filterLocation" required>
+          <input type="text" ng-model="userData.filterWO.location" required>
           <div class="bottomBar"></div>
           <label>Location</label>
         </div>
       </form>
       <div class="woStats">
-        asdas
+        {{filtered.length}} - {{ userData.filterWO | json }}
       </div>
     </div>
   </div>
   
   <div class="woListings">
     <ul class="woCards">
-      <li ng-repeat="workout in userData.workouts | filter: {theActivity: filterActivity, theLocation: filterLocation} | orderBy:'-theDate'">
+      <li ng-repeat="workout in filtered = (userData.workouts | woFilter: userData.filterWO | orderBy:'-theDate')">
         <div class="aCard">
           <div>
             <span class="woActivity"><h2>{{workout.theActivity}}</h2></span>

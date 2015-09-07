@@ -1,6 +1,4 @@
-angular.module('woApp')
-
-.run(["$rootScope", "$state", function($rootScope, $state) {
+app.run(["$rootScope", "$state", function($rootScope, $state) {
   $rootScope.$on("$stateChangeError", function(event, toState, toParams, fromState, fromParams, error) {
     // We can catch the error thrown when the $requireAuth promise is rejected
     // and redirect the user back to the home page
@@ -9,7 +7,6 @@ angular.module('woApp')
     }
   });
 }])
-
 
 .config(function($stateProvider, $urlRouterProvider) {
 

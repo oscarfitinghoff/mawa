@@ -415,7 +415,7 @@ form {
 
 input,
 textarea,
-button {
+.mawaBtn {
   width: 100%;
   height: 40px;
   margin: 5px 0; }
@@ -430,7 +430,7 @@ textarea {
   resize: none;
   margin-top: 15px; }
 
-button {
+.mawaBtn {
   border-radius: 3px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   background: #4CAF50;
@@ -460,6 +460,21 @@ button {
   .inputGroup textarea:focus {
     border-color: #02A8F4;
     border-bottom-width: 3px; }
+
+.inputWDate {
+  position: relative; }
+  .inputWDate input {
+    width: 80%; }
+  .inputWDate .mawaBtn {
+    position: absolute;
+    top: 2px;
+    right: 0;
+    width: 18%;
+    height: 34px; }
+    .inputWDate .mawaBtn i {
+      position: absolute;
+      top: 5px;
+      left: 6px; }
 
 .workoutPage {
   display: flex;

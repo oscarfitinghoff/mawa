@@ -1,1 +1,1 @@
-var app = angular.module('woApp', ['firebase', 'ui.router'])
+var app = angular.module('woApp', ['firebase', 'ui.router', 'ui.bootstrap']);
