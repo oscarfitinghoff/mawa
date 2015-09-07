@@ -27,7 +27,7 @@
         <div class="bottomBar"></div>
         <label>Comment</label>
       </div>
-      <button class="mawaBtn workoutBtn" ng-click="open($event)">Save</button>
+      <button class="mawaBtn workoutBtn" ng-click="addWorkout()">Save</button>
     </form>
     <div class="woDashboard">
       <form>
@@ -55,7 +55,6 @@
         </div>
       </form>
       <div class="woStats">
-        {{filtered.length}} - {{ userData.filterWO | json }}
       </div>
     </div>
   </div>
