@@ -3,7 +3,8 @@
 <head>
 	<meta charset="UTF-8" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="styles/bootstrap.min.css" />
+  <link rel="stylesheet" href="styles/css/angular-chart.css" />
+  <link rel="stylesheet" href="styles/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="styles/main.css" />
 	<title>mawa</title>
 </head>
@@ -20,7 +21,7 @@
 			</nav>
 		</header>
 		<main>
-			<section class="mainSection" ui-view>
+			<section cl  ass="mainSection" ui-view>
 			</section>
 		</main>
 		<footer>
@@ -33,9 +34,12 @@
 	<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
 	<!-- AngularFire -->
 	<script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
+  <!-- Chart.js // They are working on releasing 2.0 which could break stuff -->
+  <script src="http://cdn.rawgit.com/nnnick/Chart.js/master/Chart.min.js"></script>
 	<!-- Externals -->
 	<script src="scripts/externals/angular-ui-router.min.js"></script>
-
+  <script src="scripts/externals/angular-chart.min.js"></script>
+  <script src="scripts/externals/ui-bootstrap-tpls-0.13.3.min.js"></script>
 	<!-- My Appfile -->
 	<script src="scripts/app.min.js"></script>
 </body>

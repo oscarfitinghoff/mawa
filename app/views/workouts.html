@@ -33,13 +33,13 @@
       <form>
         <div class="inputGroup inputWDate">
           <input type="text" datepicker-localdate ng-model="userData.filterWO.fromDate" datepicker-popup="yyyy-MM-dd" is-open="userData.dateSelectors.filterFromDate" required>
-          <button class="mawaBtn" type="button" ng-click="open($event, 'filterFromDate')"><i class="material-icons">today</i></button>
+          <button type="button" class="mawaBtn" ng-click="open($event, 'filterFromDate')"><i class="material-icons">today</i></button>
           <div class="bottomBar"></div>
           <label>From</label>
         </div>
         <div class="inputGroup inputWDate">
           <input type="text" datepicker-localdate ng-model="userData.filterWO.toDate" datepicker-popup is-open="userData.dateSelectors.filterToDate" required>
-          <button class="mawaBtn" type="button" ng-click="open($event, 'filterToDate')"><i class="material-icons">today</i></button>
+          <button type="button" class="mawaBtn" ng-click="open($event, 'filterToDate')"><i class="material-icons">today</i></button>
           <div class="bottomBar"></div>
           <label>To</label>
         </div>
@@ -53,9 +53,14 @@
           <div class="bottomBar"></div>
           <label>Location</label>
         </div>
+        <button type="button" class="mawaBtn" ng-click="resetFilter()">Reset</button>
       </form>
       <div class="woStats">
-      Number of workouts: {{ filtered.length }}
+        <div>
+          # of workouts: <br> {{ filtered.length }}
+        </div>
+      <canvas id="pie" class="chart chart-pie woDBPie" chart-data="data" chart-labels="labels">
+      </canvas> 
       </div>
     </div>
   </div>

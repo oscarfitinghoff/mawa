@@ -17,7 +17,10 @@ app.controller('woCtrl', function(currentAuth, $scope, dataFactory) {
       fromDate: "",
       toDate: "",
       activity: "",
-      location: ""
+      location: "",
+      numOfWorkouts: {
+
+      }
     },
     dateSelectors: {
       addWorkoutDate: false,
@@ -25,9 +28,14 @@ app.controller('woCtrl', function(currentAuth, $scope, dataFactory) {
       filterToDate: false
     },
     workoutStats: {
-      workoutsPerWeek: ""
+      workoutsPerWeek: "",
+      numOfWorkouts: {
+
+      }
     }
   }
+  $scope.labels = [];
+  $scope.data = [];
 
   var getUserData = function() {
     var today = new Date();
@@ -37,7 +45,6 @@ app.controller('woCtrl', function(currentAuth, $scope, dataFactory) {
     $scope.userData.newWorkout = {
       theDate: today.customFormat("#YYYY#-#MM#-#DD#")
     };
-
     $scope.userData.account.$loaded().then(function() {
       if($scope.userData.filterWO.fromDate === "") {
         var startDate = new Date($scope.userData.account.startWorkout);
@@ -49,19 +56,82 @@ app.controller('woCtrl', function(currentAuth, $scope, dataFactory) {
       }
     });
 
+    var obj = {};
     $scope.userData.workouts.$loaded().then(function() {
       angular.forEach($scope.userData.workouts, function(value, key) {
+
+        numberOfWorkouts(false, obj, value);
+
         if($scope.userData.theActivities.indexOf(value.theActivity) == -1) {
           $scope.userData.theActivities.push(value.theActivity);
         }
         if($scope.userData.theLocations.indexOf(value.theLocation) == -1) {
           $scope.userData.theLocations.push(value.theLocation);
         }
+
+        //Do dashboard stuff here so I don't have to look through it again?
+        //calcWorkoutData(value);
       });
+      obj = {};
+      drawPieChart();
+
     });
   }
 
   getUserData();
+  //Gör snyggare
+  var numberOfWorkouts = function(flag, obj, workout) {
+    if(!obj.hasOwnProperty(workout.theActivity)) {
+      obj[workout.theActivity] = 1;
+    } else {
+      obj[workout.theActivity]++;
+    }
+    if(!flag) {
+      $scope.userData.workoutStats.numOfWorkouts = obj;
+    } else {
+      $scope.userData.filterWO.numOfWorkouts = obj;
+    }
+  };
+
+  var calcWorkoutData = function(workout) {
+
+  }
+
+  $scope.$watchGroup(['userData.filterWO.fromDate', 'userData.filterWO.toDate', 'userData.filterWO.activity', 'userData.filterWO.location'], function() {
+    var obj = {};
+    angular.forEach($scope.filtered, function(value, key) {
+      numberOfWorkouts(true, obj, value);
+    });
+    obj = {};
+    reDrawPieChart();
+  });
+  //make it one function instead of 2
+  var drawPieChart = function() {
+    $scope.labels = [];
+    $scope.data = [];
+
+    angular.forEach($scope.userData.workoutStats.numOfWorkouts, function(value, key) {
+      $scope.labels.push(key);
+      $scope.data.push(value);
+    }); 
+  }
+  var reDrawPieChart = function() {
+    $scope.labels = [];
+    $scope.data = [];
+
+    if($scope.filtered.length !== 0) {
+      angular.forEach($scope.userData.filterWO.numOfWorkouts, function(value, key) {
+        $scope.labels.push(key);
+        $scope.data.push(value);
+      });
+    }
+  }
+  $scope.resetFilter = function() {
+    $scope.labels.push("key");
+    $scope.data.push(50);
+    console.log($scope.labels);
+  }
+  
 
   $scope.addWorkout = function() {
     //function getTheWeek
@@ -81,7 +151,7 @@ app.controller('woCtrl', function(currentAuth, $scope, dataFactory) {
     var oneDay = 1000*60*60*24;
     var workoutDate = new Date(theDate);
     var startDate = new Date($scope.userData.account.startWorkout);
-    var diff = workoutDate.getTime() - startDate; //startDate GLOBAL VAR atm (in app.js)
+    var diff = workoutDate.getTime() - startDate;
     var theWeek = Math.ceil((diff/oneDay)/7);
     return theWeek;
   }
@@ -90,4 +160,7 @@ app.controller('woCtrl', function(currentAuth, $scope, dataFactory) {
   $scope.open = function($event, opened) {
     $scope.userData.dateSelectors[opened] = true;
   };
+
+
+  
 });
