@@ -22,7 +22,25 @@
     .woStats {
       display: none;
       @media #{$tablet} {
-        display: initial;
+        display: flex;
+        .dbData {
+          @include borderRadius(3px);
+          @include boxShadow(1);
+          margin: 5px;
+          padding: 10px;
+          height: 210px;
+          text-align: center;
+          .dataTitle {
+          }
+        }
+        .lineChart {
+          width: 800px;
+          canvas {
+              width: 100% !important;
+              max-width: 800px;
+              height: 160px !important;
+          }
+        }
       }
     }
   }
@@ -55,3 +73,4 @@
     }
   }
 }
+

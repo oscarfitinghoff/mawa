@@ -500,7 +500,20 @@ textarea {
       display: none; }
       @media (min-width: 768px) {
         .woTopRow .woDashboard .woStats {
-          display: initial; } }
+          display: flex; }
+          .woTopRow .woDashboard .woStats .dbData {
+            border-radius: 3px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            margin: 5px;
+            padding: 10px;
+            height: 210px;
+            text-align: center; }
+          .woTopRow .woDashboard .woStats .lineChart {
+            width: 800px; }
+            .woTopRow .woDashboard .woStats .lineChart canvas {
+              width: 100% !important;
+              max-width: 800px;
+              height: 160px !important; } }
 
 .woCards {
   display: flex;

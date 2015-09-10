@@ -56,11 +56,26 @@
         <button type="button" class="mawaBtn" ng-click="resetFilter()">Reset</button>
       </form>
       <div class="woStats">
-        <div>
-          # of workouts: <br> {{ filtered.length }}
+        <div class="dbData">
+          <span class="dataTitle">
+            <h5># of workouts:</h5>
+          </span>
+          <h1>{{ filtered.length }}</h1>
         </div>
-      <canvas id="pie" class="chart chart-pie woDBPie" chart-data="data" chart-labels="labels">
-      </canvas> 
+        <div class="dbData pieChart">
+          <span class="dataTitle">
+            <h5>Distribution</h5>
+          </span>
+          <canvas id="pie" class="chart chart-pie woDBPie" chart-data="chartData.distribution.data" chart-labels="chartData.distribution.labels">
+          </canvas> 
+        </div>
+        <div class="dbData lineChart">
+          <span class="dataTitle">
+            <h5>Distribution</h5>
+          </span>
+          <canvas id="line" class="chart chart-line woDBLine" chart-data="chartData.workoutsPerWeek.data" chart-labels="chartData.workoutsPerWeek.labels">
+          </canvas> 
+        </div>
       </div>
     </div>
   </div>
