@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="styles/css/angular-chart.css" />
   <link rel="stylesheet" href="styles/css/bootstrap.min.css" />
@@ -20,9 +21,8 @@
 				</ul>
 			</nav>
 		</header>
-		<main>
-			<section cl  ass="mainSection" ui-view>
-			</section>
+		<main class="mainSection" ui-view>
+			
 		</main>
 		<footer>
 
@@ -35,7 +35,7 @@
 	<!-- AngularFire -->
 	<script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
   <!-- Chart.js // They are working on releasing 2.0 which could break stuff -->
-  <script src="http://cdn.rawgit.com/nnnick/Chart.js/master/Chart.min.js"></script>
+  <script src="https://cdn.rawgit.com/nnnick/Chart.js/master/Chart.min.js"></script>
 	<!-- Externals -->
 	<script src="scripts/externals/angular-ui-router.min.js"></script>
   <script src="scripts/externals/angular-chart.min.js"></script>

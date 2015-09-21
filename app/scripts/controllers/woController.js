@@ -200,11 +200,11 @@ app.controller('woCtrl', function(currentAuth, $scope, dataFactory) {
     $scope.userData.filterWO.toDate = today.customFormat("#YYYY#-#MM#-#DD#");
 
 
-    $scope.userData.filterWO.activity: ""
-      location: "",
-      numOfWorkouts: {
+    // $scope.userData.filterWO.activity: ""
+    //   location: "",
+    //   numOfWorkouts: {
 
-      }
+    //   }
   }
   
 

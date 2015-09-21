@@ -367,7 +367,8 @@ th {
 
 html,
 body {
-  height: 100%; }
+  height: 100%;
+  width: 100%; }
 
 body {
   font-family: 'Open Sans', sans-serif; }
@@ -476,6 +477,9 @@ textarea {
       top: 5px;
       left: 6px; }
 
+.loginPage {
+  width: 100%; }
+
 .workoutPage {
   display: flex;
   flex-direction: column;
@@ -518,8 +522,7 @@ textarea {
 .woCards {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center; }
+  flex-wrap: wrap; }
   .woCards li {
     list-style: none; }
     .woCards li .aCard {
@@ -528,8 +531,7 @@ textarea {
       margin: 10px;
       padding: 10px;
       background: #607D8B;
-      width: 270px;
-      height: 80px; }
+      width: 270px; }
       .woCards li .aCard div {
         display: flex;
         align-items: center; }

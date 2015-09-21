@@ -50,7 +50,6 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: center;
   li {
     list-style: none;
 
@@ -61,7 +60,6 @@
       padding: 10px;
       background: #607D8B;
       width: 270px;
-      height: 80px;
       div {
         display: flex;
         align-items: center;
