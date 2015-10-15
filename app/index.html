@@ -12,12 +12,13 @@
 <body ng-app="woApp" ng-controller="mainCtrl">
 	<div class="wrapper">
 		<header class="mainHeader">
-			<div class="logo">mawa</div>
+			<div class="logo"><a ui-sref="startPage"><h3>mawa</h3></a></div>
 			<nav class="mainNav" ng-hide="!authData">
 				<ul>
-					<li><a ui-sref="workouts" ui-sref-active="activeLink">Workouts</a></li>
-					<li><a ui-sref="weighings" ui-sref-active="activeLink">Weighings</a></li>
-					<li><a ui-sref="logout">Log out</a></li>
+					<li><a ui-sref="workouts" ui-sref-active="activeLink"><i class="material-icons opacity-75">build</i></a></li>
+					<li><a ui-sref="weighings" ui-sref-active="activeLink"><i class="material-icons opacity-75">assignment_ind</i></a></li>
+          <li><a ui-sref="account" ui-sref-active="activeLink"><i class="material-icons opacity-75">settings</i></a></li>
+					<li><a ui-sref="logout"><i class="material-icons opacity-75">power_settings_new</i></a></li>
 				</ul>
 			</nav>
 		</header>

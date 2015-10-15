@@ -5,6 +5,7 @@
   @media #{$tablet} {
     align-items: flex-start;
   }
+  padding: 10px;
 }
 
 .woTopRow {
@@ -13,11 +14,14 @@
   @media #{$tablet} {
     flex-direction: row;
   }
+  margin-bottom: 25px;
   .woDashboard {
     display: flex;
     flex-direction: column;
+    margin-top: 15px;
     @media #{$tablet} {
       flex-direction: row;
+      margin-top: 0;
     }
     .woStats {
       display: none;
@@ -36,9 +40,9 @@
         .lineChart {
           width: 800px;
           canvas {
-              width: 100% !important;
-              max-width: 800px;
-              height: 160px !important;
+            width: 100% !important;
+            max-width: 800px;
+            height: 160px !important;
           }
         }
       }
@@ -50,24 +54,23 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  li {
+  .aCard {
     list-style: none;
-
-    .aCard {
-      @include borderRadius(3px);
-      @include boxShadow(1);
-      margin: 10px;
-      padding: 10px;
-      background: #607D8B;
-      width: 270px;
-      div {
-        display: flex;
-        align-items: center;
-      }
-      .woActivity, 
-      .woLocation {
-        flex: 1;
-      }
+    @include borderRadius(3px);
+    @include boxShadow(1);
+    margin: 10px;
+    padding: 10px;
+    background: $cardColor;
+    min-width: 270px;
+    max-width: 350px;
+    flex: 1;
+    div {
+      display: flex;
+      align-items: center;
+    }
+    .woActivity, 
+    .woLocation {
+      flex: 1;
     }
   }
 }

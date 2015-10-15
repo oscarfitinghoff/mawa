@@ -100,7 +100,7 @@ app.controller('woCtrl', function(currentAuth, $scope, dataFactory) {
   };
 
   getUserData();
-  //Gör snyggare
+  //Remake!
   var numberOfWorkouts = function(obj, workout) {
     if(!obj.hasOwnProperty(workout.theActivity)) {
       obj[workout.theActivity] = 1;
@@ -133,12 +133,6 @@ app.controller('woCtrl', function(currentAuth, $scope, dataFactory) {
     reDrawLineChart();
   });
 
-
-
-
-
-
-
   var drawLineChart = function() {
     $scope.chartData.workoutsPerWeek.labels = [];
     $scope.chartData.workoutsPerWeek.data = [[]];
@@ -159,16 +153,6 @@ app.controller('woCtrl', function(currentAuth, $scope, dataFactory) {
       });
     }
   }
-
-
-
-
-
-
-
-
-
-
 
   //make it one function instead of 2
   var drawPieChart = function() {
@@ -193,21 +177,19 @@ app.controller('woCtrl', function(currentAuth, $scope, dataFactory) {
   }
 
   $scope.resetFilter = function() {
-    //Dublicate stuff...
-
     var startDate = new Date($scope.userData.account.startWorkout);
-    $scope.userData.filterWO.fromDate = startDate.customFormat("#YYYY#-#MM#-#DD#");
-    $scope.userData.filterWO.toDate = today.customFormat("#YYYY#-#MM#-#DD#");
+    var today = new Date();
 
-
-    // $scope.userData.filterWO.activity: ""
-    //   location: "",
-    //   numOfWorkouts: {
-
-    //   }
+    $scope.userData.filterWO = {
+      fromDate: startDate.customFormat("#YYYY#-#MM#-#DD#"),
+      toDate: today.customFormat("#YYYY#-#MM#-#DD#"),
+      activity: "",
+      location: "",
+      numOfWorkouts: {
+      }
+    }
   }
   
-
   $scope.addWorkout = function() {
     //function getTheWeek
     var newData = $scope.userData.newWorkout;
@@ -235,7 +217,4 @@ app.controller('woCtrl', function(currentAuth, $scope, dataFactory) {
   $scope.open = function($event, opened) {
     $scope.userData.dateSelectors[opened] = true;
   };
-
-
-  
 });

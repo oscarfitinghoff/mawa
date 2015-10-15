@@ -1,0 +1,19 @@
+.startPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  @media #{$tablet} {
+    flex-direction: row;
+  } 
+  .selection {
+    padding: 20px;
+    text-align: center;
+    @media #{$desktop} {
+      a i {
+        font-size: 92px;
+        padding: 0 35px;
+      }
+    }
+  }
+}

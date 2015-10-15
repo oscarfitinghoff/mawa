@@ -82,16 +82,14 @@
   
   <div class="woListings">
     <ul class="woCards">
-      <li ng-repeat="workout in filtered = (userData.workouts | woFilter: userData.filterWO | orderBy:'-theDate')">
-        <div class="aCard">
-          <div>
-            <span class="woActivity"><h2>{{workout.theActivity}}</h2></span>
-            <span class="woDuration">{{workout.theDuration}}</span>
-          </div>
-          <div>
-            <span class="woLocation">{{workout.theLocation}}</span>
-            <span>{{workout.theDate}}</span>
-          </div>
+      <li class="aCard" ng-repeat="workout in filtered = (userData.workouts | woFilter: userData.filterWO | orderBy:'-theDate')">
+        <div>
+          <span class="woActivity"><h2>{{workout.theActivity}}</h2></span>
+          <span class="woDuration">{{workout.theDuration}}</span>
+        </div>
+        <div>
+          <span class="woLocation">{{workout.theLocation}}</span>
+          <span>{{workout.theDate}}</span>
         </div>
       </li>
     </ul>
