@@ -2,26 +2,28 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="styles/bootstrap.min.css" />
+  <link rel="stylesheet" href="styles/css/angular-chart.css" />
+  <link rel="stylesheet" href="styles/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="styles/main.css" />
 	<title>mawa</title>
 </head>
 <body ng-app="woApp" ng-controller="mainCtrl">
 	<div class="wrapper">
 		<header class="mainHeader">
-			<div class="logo">mawa</div>
+			<div class="logo"><a ui-sref="startPage"><h3>mawa</h3></a></div>
 			<nav class="mainNav" ng-hide="!authData">
 				<ul>
-					<li><a ui-sref="workouts" ui-sref-active="activeLink">Workouts</a></li>
-					<li><a ui-sref="weighings" ui-sref-active="activeLink">Weighings</a></li>
-					<li><a ui-sref="logout">Log out</a></li>
+					<li><a ui-sref="workouts" ui-sref-active="activeLink"><i class="material-icons opacity-75">build</i></a></li>
+					<li><a ui-sref="weighings" ui-sref-active="activeLink"><i class="material-icons opacity-75">assignment_ind</i></a></li>
+          <li><a ui-sref="account" ui-sref-active="activeLink"><i class="material-icons opacity-75">settings</i></a></li>
+					<li><a ui-sref="logout"><i class="material-icons opacity-75">power_settings_new</i></a></li>
 				</ul>
 			</nav>
 		</header>
-		<main>
-			<section class="mainSection" ui-view>
-			</section>
+		<main class="mainSection" ui-view>
+			
 		</main>
 		<footer>
 
@@ -33,9 +35,12 @@
 	<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
 	<!-- AngularFire -->
 	<script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
+  <!-- Chart.js // They are working on releasing 2.0 which could break stuff -->
+  <script src="https://cdn.rawgit.com/nnnick/Chart.js/master/Chart.min.js"></script>
 	<!-- Externals -->
 	<script src="scripts/externals/angular-ui-router.min.js"></script>
-
+  <script src="scripts/externals/angular-chart.min.js"></script>
+  <script src="scripts/externals/ui-bootstrap-tpls-0.13.3.min.js"></script>
 	<!-- My Appfile -->
 	<script src="scripts/app.min.js"></script>
 </body>

@@ -5,23 +5,18 @@
 $colorBlue: #02A8F4;
 $colorGreen: #4CAF50;
 $colorBlack: #000;
+$cardColor: #A1887F;
 
 //Media Queries Breakpoints
 $tablet: "(min-width: 768px)";
 $desktop: "(min-width: 1024px)";
 
-//Stuff
-ul {
-  padding: 0;
-}
-h2 {
-  margin: 0;
-}
-
 //Import files
 @import 'normalize';
+@import 'general';
 @import 'mixins';
 @import 'styles';
+@import 'login';
+@import 'startPage';
 @import 'workout';
-
-//
+@import 'weighings';

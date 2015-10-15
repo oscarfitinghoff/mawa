@@ -33,13 +33,13 @@
       <form>
         <div class="inputGroup inputWDate">
           <input type="text" datepicker-localdate ng-model="userData.filterWO.fromDate" datepicker-popup="yyyy-MM-dd" is-open="userData.dateSelectors.filterFromDate" required>
-          <button class="mawaBtn" type="button" ng-click="open($event, 'filterFromDate')"><i class="material-icons">today</i></button>
+          <button type="button" class="mawaBtn" ng-click="open($event, 'filterFromDate')"><i class="material-icons">today</i></button>
           <div class="bottomBar"></div>
           <label>From</label>
         </div>
         <div class="inputGroup inputWDate">
           <input type="text" datepicker-localdate ng-model="userData.filterWO.toDate" datepicker-popup is-open="userData.dateSelectors.filterToDate" required>
-          <button class="mawaBtn" type="button" ng-click="open($event, 'filterToDate')"><i class="material-icons">today</i></button>
+          <button type="button" class="mawaBtn" ng-click="open($event, 'filterToDate')"><i class="material-icons">today</i></button>
           <div class="bottomBar"></div>
           <label>To</label>
         </div>
@@ -53,29 +53,45 @@
           <div class="bottomBar"></div>
           <label>Location</label>
         </div>
+        <button type="button" class="mawaBtn" ng-click="resetFilter()">Reset</button>
       </form>
       <div class="woStats">
+        <div class="dbData">
+          <span class="dataTitle">
+            <h5># of workouts:</h5>
+          </span>
+          <h1>{{ filtered.length }}</h1>
+        </div>
+        <div class="dbData pieChart">
+          <span class="dataTitle">
+            <h5>Distribution</h5>
+          </span>
+          <canvas id="pie" class="chart chart-pie woDBPie" chart-data="chartData.distribution.data" chart-labels="chartData.distribution.labels">
+          </canvas> 
+        </div>
+        <div class="dbData lineChart">
+          <span class="dataTitle">
+            <h5>Workouts each week</h5>
+          </span>
+          <canvas id="line" class="chart chart-line woDBLine" chart-data="chartData.workoutsPerWeek.data" chart-labels="chartData.workoutsPerWeek.labels">
+          </canvas> 
+        </div>
       </div>
     </div>
   </div>
   
   <div class="woListings">
     <ul class="woCards">
-      <li ng-repeat="workout in filtered = (userData.workouts | woFilter: userData.filterWO | orderBy:'-theDate')">
-        <div class="aCard">
-          <div>
-            <span class="woActivity"><h2>{{workout.theActivity}}</h2></span>
-            <span class="woDuration">{{workout.theDuration}}</span>
-          </div>
-          <div>
-            <span class="woLocation">{{workout.theLocation}}</span>
-            <span>{{workout.theDate}}</span>
-          </div>
+      <li class="aCard" ng-repeat="workout in filtered = (userData.workouts | woFilter: userData.filterWO | orderBy:'-theDate')">
+        <div>
+          <span class="woActivity"><h2>{{workout.theActivity}}</h2></span>
+          <span class="woDuration">{{workout.theDuration}}</span>
+        </div>
+        <div>
+          <span class="woLocation">{{workout.theLocation}}</span>
+          <span>{{workout.theDate}}</span>
         </div>
       </li>
     </ul>
   </div>
 </div>
-<section>
-  <pre>{{userData.workouts | json}}</pre>
-</section>

@@ -2,7 +2,7 @@ app.controller("loginCtrl", ["$scope", "Auth", '$state', function($scope, Auth, 
   
   var authData = Auth.$getAuth();
   if (authData) {
-    $state.go('workouts');
+    $state.go('startPage');
   }
 
   $scope.loginError = false;
@@ -11,7 +11,7 @@ app.controller("loginCtrl", ["$scope", "Auth", '$state', function($scope, Auth, 
       email: $scope.user.email,
       password: $scope.user.password
     }).then(function(authData) {
-      $state.go('workouts');
+      $state.go('startPage');
     }).catch(function(error) {
       console.error(error);
       $scope.loginError = true;

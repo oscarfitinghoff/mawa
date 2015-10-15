@@ -18,6 +18,20 @@ app.run(["$rootScope", "$state", function($rootScope, $state) {
       templateUrl: 'views/login.html',
       controller: 'loginCtrl'
     })
+    .state('startPage', {
+      url: '/startPage',
+      templateUrl: 'views/startPage.html',
+      controller: 'startPageCtrl',
+      resolve: {
+        // controller will not be loaded until $requireAuth resolves
+        // Auth refers to our $firebaseAuth wrapper in the example above
+        "currentAuth": ["Auth", function(Auth) {
+          // $requireAuth returns a promise so the resolve waits for it to complete
+          // If the promise is rejected, it will throw a $stateChangeError (see above)
+          return Auth.$requireAuth();
+        }]
+      }
+    })
     .state('account', {
       url: '/account',
       templateUrl: 'views/account.html',
@@ -49,7 +63,7 @@ app.run(["$rootScope", "$state", function($rootScope, $state) {
     .state('weighings', {
       url: '/weighings',
       templateUrl: 'views/weighings.html',
-      controller: 'weightCtrl',
+      controller: 'weighingsCtrl',
       resolve: {
         // controller will not be loaded until $requireAuth resolves
         // Auth refers to our $firebaseAuth wrapper in the example above
@@ -61,7 +75,6 @@ app.run(["$rootScope", "$state", function($rootScope, $state) {
       } 
     })
     .state('logout', {
-      url: 'logout',
       controller: function($state, Auth) {
         Auth.$unauth();
         $state.go('home');
