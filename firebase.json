@@ -1,0 +1,17 @@
+{
+  "firebase": "mawa",
+  "public": "app",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**",
+    "app/scripts/controllers/**",
+    "app/scripts/directives/**",
+    "app/scripts/ecternals/**",
+    "app/scripts/filters/**",
+    "app/scripts/routing/**",
+    "app/scripts/services/**",
+    "app/scripts/app.js",
+    "app/styles/sass/**"
+  ]
+}

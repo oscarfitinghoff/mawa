@@ -2,15 +2,15 @@ app.factory('dataFactory', ['$firebaseArray', '$firebaseObject', function($fireb
 
   return {
     getAccountData: function(user) {
-      var ref = new Firebase('https://raxworkout.firebaseio.com/users/' + user + '/account');
+      var ref = new Firebase('https://mawa.firebaseio.com/users/' + user + '/account');
       return $firebaseObject(ref);
     },
     getWorkoutData: function(user) {
-      var ref = new Firebase('https://raxworkout.firebaseio.com/users/' + user + '/workouts');
+      var ref = new Firebase('https://mawa.firebaseio.com/users/' + user + '/workouts');
       return $firebaseArray(ref);
     },
     addWorkoutData: function(user, theWorkout) {
-      var ref = new Firebase('https://raxworkout.firebaseio.com/users/' + user + '/workouts');
+      var ref = new Firebase('https://mawa.firebaseio.com/users/' + user + '/workouts');
       var data = $firebaseArray(ref);
       data.$add(theWorkout).then(function(data) {
         var id = data.key();
@@ -18,7 +18,7 @@ app.factory('dataFactory', ['$firebaseArray', '$firebaseObject', function($fireb
       });
     },
     getWeighingData: function(user) {
-      var ref = new Firebase('https://raxworkout.firebaseio.com/users/' + user + '/weigh');
+      var ref = new Firebase('https://mawa.firebaseio.com/users/' + user + '/weigh');
       return $firebaseArray(ref);
     }
   }
