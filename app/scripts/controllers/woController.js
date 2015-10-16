@@ -1,4 +1,4 @@
-app.controller('woCtrl', function(currentAuth, $scope, dataFactory) {
+app.controller('woCtrl', function($scope, currentAuth, dataFactory) {
   
   //UserData structure
   $scope.userData = {
@@ -28,6 +28,7 @@ app.controller('woCtrl', function(currentAuth, $scope, dataFactory) {
       filterToDate: false
     },
     workoutStats: {
+      numOfWeeks: "0",
       avgWorkoutsPerWeek: "",
       workoutsPerWeek: {
 
@@ -65,6 +66,7 @@ app.controller('woCtrl', function(currentAuth, $scope, dataFactory) {
       if($scope.userData.filterWO.toDate === "") {
         $scope.userData.filterWO.toDate = today.customFormat("#YYYY#-#MM#-#DD#");
       }
+      //$scope.userData.workoutStats.numOfWeeks = Math.floor((Date.parse($scope.userData.filterWO.toDate) - Date.parse($scope.userData.filterWO.fromDate)) / 24*60*60*1000);
     });
 
     $scope.userData.workouts.$loaded().then(function() {
@@ -108,7 +110,7 @@ app.controller('woCtrl', function(currentAuth, $scope, dataFactory) {
       obj[workout.theActivity]++;
     }
   };
-  //Must include weeks with no workout
+  //Should include weeks with no workout perhaps?
   var workoutsPerWeek = function(obj, workout) {
     if(!obj.hasOwnProperty(workout.theWeek)) {
       obj[workout.theWeek] = 1;
@@ -117,7 +119,7 @@ app.controller('woCtrl', function(currentAuth, $scope, dataFactory) {
     }
   }
 
-  $scope.$watchGroup(['userData.filterWO.fromDate', 'userData.filterWO.toDate', 'userData.filterWO.activity', 'userData.filterWO.location'], function() {
+  $scope.$watchGroup(['userData.filterWO.fromDate', 'userData.filterWO.toDate', 'userData.filterWO.activity', 'userData.filterWO.location', 'userData.workouts'], function() {
     var NOWobj = {};
     var WPWobj = {};
     angular.forEach($scope.filtered, function(value, key) {

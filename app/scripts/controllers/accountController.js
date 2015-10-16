@@ -1,19 +1,20 @@
 app.controller('accCtrl', function(currentAuth, dataFactory, $scope) {
-  //console.log(currentAuth.uid)
-  $scope.userData = {
-    account: dataFactory.getAccountData(currentAuth.uid)
-  }
-  
-  // return $scope.userData = {
-  //   user: {
-  //     email: temp[0].email,
-  //     startWorkout: temp[0].startWorkout
-  //   },
-  //   weigh: temp[1],
-  //   workouts: temp[2]
-  // };
-  // console.log($scope.userData);
-  // });
-  
 
+  $scope.userData = {
+    account: []
+  };
+
+  var getUserData = function() {
+    $scope.userData.account = dataFactory.getAccountData(currentAuth.uid);
+    $scope.userData.account.$loaded().then(function() {
+      var startDate = new Date($scope.userData.account.startWorkout);
+      $scope.userData.account.startWorkout = startDate.customFormat("#YYYY#-#MM#-#DD#");
+    });
+  };
+
+  getUserData();
+
+
+  $scope.changePass = function() {
+  };
 });

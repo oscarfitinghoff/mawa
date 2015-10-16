@@ -6,4 +6,63 @@
     align-items: flex-start;
   }
   padding: 10px;
+  .weTopRow {
+    display: flex;
+    .weDashboard {
+      display: none;
+      @media #{$tablet} {
+        display: inline-block;
+      }
+    }
+  }
+  .weDashboard {
+    display: none;
+    @media #{$tablet} {
+      display: inline-block;
+    }
+  }
+}
+
+
+.weTopRow {
+  display: flex;
+  flex-direction: column;
+  @media #{$desktop} {
+    flex-direction: row;
+  }
+  margin-bottom: 25px;
+  .weDashboard {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    @media #{$tablet} {
+      flex-direction: row;
+      margin-top: 0;
+    }
+    .weStats {
+      display: none;
+      @media #{$tablet} {
+        display: flex;
+        flex-wrap: wrap;
+         .dbData {
+          @include borderRadius(3px);
+          @include boxShadow(1);
+          margin: 5px;
+          padding: 10px;
+          height: 340px;
+          text-align: center;
+          .dataTitle {
+          }
+        }
+        .lineChart {
+          width: 700px;
+          canvas {
+            width: 100% !important;
+            max-width: 700px;
+            height: 260px !important;
+          }
+        }
+      }
+    }
+  }
 }

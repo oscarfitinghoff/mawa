@@ -2,39 +2,47 @@
   <div class="weTopRow">
     <form class="weightForm">
       <div class="inputGroup inputWDate">
-        <input type="text" required>
-        <button class="mawaBtn" type="button"><i class="material-icons">today</i></button>
+        <input type="text" datepicker-localdate ng-model="userData.newWeighings.theDate" datepicker-popup="yyyy-MM-dd" is-open="userData.dateSelectors.addWeighingDate" required>
+        <button class="mawaBtn" type="button" ng-click="open($event, 'addWeighingDate')"><i class="material-icons">today</i></button>
         <div class="bottomBar"></div>
         <label>Date</label>
       </div>
       <div class="inputGroup">
-        <input type="text" required>
+        <input type="text" ng-model="userData.newWeighings.theWeight" required>
         <div class="bottomBar"></div>
         <label>Weight</label>
       </div>
       <div class="inputGroup">
-        <input type="text" required>
+        <input type="text" ng-model="userData.newWeighings.theBF" required>
         <div class="bottomBar"></div>
         <label>BF</label>
       </div>
       <div class="inputGroup">
-        <input type="text" required>
+        <input type="text" ng-model="userData.newWeighings.theMuscle" required>
         <div class="bottomBar"></div>
         <label>Muscle</label>
       </div>
       <div class="inputGroup">
-        <input type="text" required>
+        <input type="text" ng-model="userData.newWeighings.theWater" required>
         <div class="bottomBar"></div>
         <label>Water</label>
       </div>
       <div class="inputGroup">
-        <input type="text" required>
+        <input type="text" ng-model="userData.newWeighings.theBones" required>
         <div class="bottomBar"></div>
         <label>Bones</label>
       </div>
-      <button class="mawaBtn">Save</button>
+      <button class="mawaBtn" ng-click="addWeighing()">Save</button>
     </form>
     <div class="weDashboard">
+      <div class="weStats">
+       <div class="dbData lineChart">
+          <span class="dataTitle">
+            <h5>Your weight</h5>
+          </span>
+          <canvas id="line" class="chart chart-line weDBLine" chart-data="chartData.weighings.data" chart-labels="chartData.weighings.labels">
+        </div>
+      </div>
     </div>
   </div>
   <div class="weListings">

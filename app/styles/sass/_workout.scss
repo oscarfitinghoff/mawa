@@ -27,7 +27,8 @@
       display: none;
       @media #{$tablet} {
         display: flex;
-        .dbData {
+        flex-wrap: wrap;
+         .dbData {
           @include borderRadius(3px);
           @include boxShadow(1);
           margin: 5px;
@@ -38,6 +39,10 @@
           }
         }
         .lineChart {
+          display: none;
+          @media #{$desktop} {
+            display: inline-block;
+          }
           width: 800px;
           canvas {
             width: 100% !important;

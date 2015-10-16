@@ -20,6 +20,14 @@ app.factory('dataFactory', ['$firebaseArray', '$firebaseObject', function($fireb
     getWeighingData: function(user) {
       var ref = new Firebase('https://mawa.firebaseio.com/users/' + user + '/weigh');
       return $firebaseArray(ref);
+    },
+    addWeighingData: function(user, theWeigh) {
+      var ref = new Firebase('https://mawa.firebaseio.com/users/' + user + '/weigh');
+      var data = $firebaseArray(ref);
+      data.$add(theWeigh).then(function(data) {
+        var id = data.key();
+        console.log("added record with id " + id);
+      });
     }
   }
 }]);

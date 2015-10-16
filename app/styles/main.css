@@ -544,7 +544,8 @@ textarea {
       display: none; }
       @media (min-width: 768px) {
         .woTopRow .woDashboard .woStats {
-          display: flex; }
+          display: flex;
+          flex-wrap: wrap; }
           .woTopRow .woDashboard .woStats .dbData {
             border-radius: 3px;
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -553,7 +554,12 @@ textarea {
             height: 210px;
             text-align: center; }
           .woTopRow .woDashboard .woStats .lineChart {
-            width: 800px; }
+            display: none;
+            width: 800px; } }
+    @media (min-width: 768px) and (min-width: 1024px) {
+      .woTopRow .woDashboard .woStats .lineChart {
+        display: inline-block; } }
+      @media (min-width: 768px) {
             .woTopRow .woDashboard .woStats .lineChart canvas {
               width: 100% !important;
               max-width: 800px;
@@ -588,3 +594,53 @@ textarea {
   @media (min-width: 768px) {
     .weighingsPage {
       align-items: flex-start; } }
+  .weighingsPage .weTopRow {
+    display: flex; }
+    .weighingsPage .weTopRow .weDashboard {
+      display: none; }
+      @media (min-width: 768px) {
+        .weighingsPage .weTopRow .weDashboard {
+          display: inline-block; } }
+  .weighingsPage .weDashboard {
+    display: none; }
+    @media (min-width: 768px) {
+      .weighingsPage .weDashboard {
+        display: inline-block; } }
+
+.weTopRow {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px; }
+  @media (min-width: 1024px) {
+    .weTopRow {
+      flex-direction: row; } }
+  .weTopRow .weDashboard {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px; }
+    @media (min-width: 768px) {
+      .weTopRow .weDashboard {
+        flex-direction: row;
+        margin-top: 0; } }
+    .weTopRow .weDashboard .weStats {
+      display: none; }
+      @media (min-width: 768px) {
+        .weTopRow .weDashboard .weStats {
+          display: flex;
+          flex-wrap: wrap; }
+          .weTopRow .weDashboard .weStats .dbData {
+            border-radius: 3px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            margin: 5px;
+            padding: 10px;
+            height: 340px;
+            text-align: center; }
+          .weTopRow .weDashboard .weStats .lineChart {
+            width: 700px; }
+            .weTopRow .weDashboard .weStats .lineChart canvas {
+              width: 100% !important;
+              max-width: 700px;
+              height: 260px !important; } }
+
+.accountPage {
+  display: flex; }
